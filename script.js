@@ -149,10 +149,10 @@ $(document).ready(() => {
     showPasswordBtn.click(() => {
         if (accessPasswordLoginInput.attr("type") === "password") {
             accessPasswordLoginInput.attr("type", "text");
-            showPasswordBtnImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/show-icon.png?raw=true");
+            showPasswordBtnImg.attr("src", "https://simple-remote.vercel.app/assets/show-icon.png");
         } else {
             accessPasswordLoginInput.attr("type", "password");
-            showPasswordBtnImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/hide-icon.png?raw=true");
+            showPasswordBtnImg.attr("src", "https://simple-remote.vercel.app/assets/hide-icon.png");
         }
 
         accessPasswordLoginInput.focus();
@@ -610,7 +610,7 @@ $(document).ready(() => {
         key.on("touchend", () => {
             if (shiftState == 1) {
                 shiftState = 0;
-                shiftKeyImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/lower-case.png?raw=true");
+                shiftKeyImg.attr("src", "https://simple-remote.vercel.app/assets/lower-case.png");
                 for (let index = 0; index < shiftAffectedKeys.length; index++) {
                     const key = shiftAffectedKeys.eq(index);
                     key.text(key.text().toLowerCase())  
@@ -649,21 +649,21 @@ $(document).ready(() => {
         }
 
         if (shiftState == 0) {
-            shiftKeyImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/lower-case.png?raw=true");
+            shiftKeyImg.attr("src", "https://simple-remote.vercel.app/assets/lower-case.png");
             for (let index = 0; index < shiftAffectedKeys.length; index++) {
                 const key = shiftAffectedKeys.eq(index);
         
                 key.text(key.text().toLowerCase())
             }
         } else if (shiftState == 1) {
-            shiftKeyImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/upper-case.png?raw=true");
+            shiftKeyImg.attr("src", "https://simple-remote.vercel.app/assets/upper-case.png");
             for (let index = 0; index < shiftAffectedKeys.length; index++) {
                 const key = shiftAffectedKeys.eq(index);
         
                 key.text(key.text().toUpperCase())
             }
         } else if (shiftState == 2) {
-            shiftKeyImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/caps-lock.png?raw=true");
+            shiftKeyImg.attr("src", "https://simple-remote.vercel.app/assets/caps-lock.png");
         }
 
         
@@ -797,7 +797,7 @@ $(document).ready(() => {
                         videoImg.attr("src", "data:image/png;base64," + screenshot_bytes);
                     }
                 } else {
-                    videoImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/black.jpg?raw=true")
+                    videoImg.attr("src", "https://simple-remote.vercel.app/assets/black.jpg")
                 }
             }
         }, 250);
@@ -847,7 +847,7 @@ $(document).ready(() => {
         } else {
             clearInterval(screenshareInterval)
             videoDisabledOutput.css("display", "flex");
-            videoImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/black.jpg?raw=true")
+            videoImg.attr("src", "https://simple-remote.vercel.app/assets/black.jpg")
         }
 
     }
