@@ -793,8 +793,9 @@ $(document).ready(() => {
                 videoDisabledOutput.css("display", "none");
                 let screenshot_bytes =  await request("POST", "screenshare", "none", "pc");
                 if (settings["video-enabled"] === "true") {
-                    if (screenshot_bytes.includes("Abort"))
-                    videoImg.attr("src", "data:image/png;base64," + screenshot_bytes);
+                    if (!screenshot_bytes.includes("Abort")) {
+                        videoImg.attr("src", "data:image/png;base64," + screenshot_bytes);
+                    }
                 } else {
                     videoImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/black.jpg?raw=true")
                 }
