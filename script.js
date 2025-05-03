@@ -753,8 +753,7 @@ $(document).ready(() => {
         "mouse-sensitivity": "100",
         "mouse-update-interval": "200",
         "video-enabled": "false",
-        "video-quality": "low",
-        "video-fps": "200"
+        "video-quality": "low"
     }
 
     if (!localStorage.getItem("settings")) {
@@ -775,7 +774,6 @@ $(document).ready(() => {
     const videoEnabledInput = $("#video-enabled");
     const videoDisabledOutput = $(".video-disabled");
     const videoQualityInput = $("#video-quality");
-    const videoFpsInput = $("#video-fps");
     const bgMoving = $(".bg-moving");
     const saveLocalSettingsBtns = $(".save-local-settings-btn");
     const revertLocalSettingsBtns = $(".revert-local-settings-btn");
@@ -795,12 +793,13 @@ $(document).ready(() => {
                 videoDisabledOutput.css("display", "none");
                 let screenshot_bytes =  await request("POST", "screenshare", "none", "pc");
                 if (settings["video-enabled"] === "true") {
+                    if (screenshot_bytes.includes("Abort"))
                     videoImg.attr("src", "data:image/png;base64," + screenshot_bytes);
                 } else {
                     videoImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/black.jpg?raw=true")
                 }
             }
-        }, Number(settings["video-fps"]));
+        }, 250);
         
     }
 
@@ -845,7 +844,6 @@ $(document).ready(() => {
             screenshare();
             videoDisabledOutput.css("display", "none");
         } else {
-            console.log("dis")
             clearInterval(screenshareInterval)
             videoDisabledOutput.css("display", "flex");
             videoImg.attr("src", "https://github.com/Samuelobabu69/maturitnyprojekt-remastered/blob/main/assets/black.jpg?raw=true")
@@ -886,7 +884,6 @@ $(document).ready(() => {
             videoEnabledInput.prop("checked", false)
         }
         videoQualityInput.val(settings["video-quality"]);
-        videoFpsInput.val(settings["video-fps"]);
 
         applyLocalSettings();
     }
@@ -990,10 +987,6 @@ $(document).ready(() => {
         request("POST", "screenshareQuality", settings["video-quality"], "pc");
         applyLocalSettings();
     });
-    videoFpsInput.change(() => {
-        settings["video-fps"] = videoFpsInput.val();
-        applyLocalSettings();
-    })
 
     /// Controller Actions ///
 
